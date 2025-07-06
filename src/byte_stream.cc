@@ -7,11 +7,11 @@ ByteStream::ByteStream( uint64_t capacity ) : capacity_( capacity ) {}
 void Writer::push( string data )
 {
   uint64_t a = available_capacity();
-  if(a > data.size()){
-    buffer+=data;
+  if ( a > data.size() ) {
+    buffer += data;
     bytes_pushed_ += data.size();
-  }else{
-    buffer+=data.substr(0, a);
+  } else {
+    buffer += data.substr( 0, a );
     bytes_pushed_ += a;
   }
 }
@@ -39,16 +39,16 @@ uint64_t Writer::bytes_pushed() const
 
 string_view Reader::peek() const
 {
-  return string_view(buffer); // Your code here.
+  return string_view( buffer ); // Your code here.
 }
 
 void Reader::pop( uint64_t len )
 {
   uint64_t buffered = bytes_buffered();
-  if(buffered > len){
-    buffer = buffer.substr(len);
+  if ( buffered > len ) {
+    buffer = buffer.substr( len );
     bytes_popped_ += len;
-  }else{
+  } else {
     buffer.erase();
     bytes_popped_ += buffered;
   }
@@ -56,7 +56,7 @@ void Reader::pop( uint64_t len )
 
 bool Reader::is_finished() const
 {
-  return  close_ && bytes_buffered() == 0; // Your code here.
+  return close_ && bytes_buffered() == 0; // Your code here.
 }
 
 uint64_t Reader::bytes_buffered() const
@@ -68,4 +68,3 @@ uint64_t Reader::bytes_popped() const
 {
   return bytes_popped_; // Your code here.
 }
-
