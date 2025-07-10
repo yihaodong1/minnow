@@ -42,6 +42,12 @@ public:
   // Access output stream writer, but const-only (can't write from outside)
   const Writer& writer() const { return output_.writer(); }
 
+  // Return Acknowledgment number
+  uint64_t acknum() const { return current; }
+  
+  // Is empty
+  bool isempty() const { return pend_ == 0; }
+
 private:
   ByteStream output_;
   std::map<uint64_t, std::string> m {};
