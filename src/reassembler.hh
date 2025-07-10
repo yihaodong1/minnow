@@ -44,7 +44,7 @@ public:
 
   // Return Acknowledgment number
   uint64_t acknum() const { return current; }
-  
+
   // Is empty
   bool isempty() const { return pend_ == 0; }
 
