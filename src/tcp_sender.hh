@@ -47,12 +47,11 @@ private:
   uint64_t bytes_send_ = 0;
   uint64_t bytes_fly_ = 0;
   uint64_t bytes_acked_ = 0;
-  uint64_t ack_ = 0;
   uint64_t current_time_ = 0;
   std::deque<TCPSenderMessage> queue_ {};
-  uint64_t unwrap(Wrap32 n);
   bool fin_ = false;
   uint64_t RTO_ms_ {};
   uint64_t transmissions_ {};
   bool timer_start_ = false;
+  TCPSenderMessage construct_msg(uint16_t window_size, bool &flag);
 };
